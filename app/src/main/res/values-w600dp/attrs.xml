@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MyButton">
+        <attr name="enabledBackground" format="reference|color" />
+        <attr name="disabledBackground" format="reference|color" />
+        <attr name="enabledTextColor" format="reference|color" />
+        <attr name="disabledTextColor" format="reference|color" />
+        <attr name="rippleColor" format="reference|color" />
+        <attr name="radius" format="dimension" />
+        <attr name="borderWidth" format="dimension" />
+        <attr name="borderColor" format="reference|color" />
+        <attr name="enabledBorderColor" format="reference|color" />
+        <attr name="disabledBorderColor" format="reference|color" />
+    </declare-styleable>
+
+</resources>

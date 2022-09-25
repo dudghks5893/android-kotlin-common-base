@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="RelativeOverlap">
+
+    <data>
+        <variable
+            name="dialog"
+            type="com.example.common_base.view.fragment.CustomDialogFragment" />
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/test"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@{dialog.title.isEmpty() &amp;&amp; !dialog.closeImg ? @dimen/dp_32 : @dimen/dp_24 }">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/dialogTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:text="@{dialog.title}"
+                android:visibility="@{dialog.title.isEmpty() ? View.GONE : View.VISIBLE}"
+                tools:text="@string/title_alert_dialog" />
+
+            <ImageView
+                android:id="@+id/iv_Close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:onClick="@{(v) -> dialog.closeDialog(v)}"
+                android:src="@drawable/icon_24_close"
+                android:visibility="@{dialog.closeImg ? View.VISIBLE : View.GONE}" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/alertDialogParent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:padding="24dp"
+            android:visibility="@{dialog.whiteBtnText.isEmpty() &amp;&amp; dialog.redBtnText.isEmpty() ? View.GONE : View.VISIBLE}">
+
+            <com.example.common_base.view.component.MyButton
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:textColor="@color/color_11"
+                android:textSize="14sp"
+                android:onClick='@{dialog.whiteBtnClick}'
+                android:text="@{dialog.whiteBtnText}"
+                android:stateListAnimator="@null"
+                android:visibility="@{dialog.whiteBtnText.isEmpty() ? View.GONE : View.VISIBLE}"
+                app:disabledBackground="@color/white"
+                app:enabledBackground="@color/white"
+                app:rippleColor="@color/white"
+                app:borderColor="@color/color_dd"
+                app:borderWidth="1dp"
+                app:radius="12dp"/>
+
+            <com.example.common_base.view.component.MyButton
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:textColor="@color/color_ff"
+                android:textSize="14sp"
+                android:stateListAnimator="@null"
+                android:onClick="@{dialog.redBtnClick}"
+                android:text="@{dialog.redBtnText}"
+                android:visibility="@{dialog.redBtnText.isEmpty() ? View.GONE : View.VISIBLE}"
+                app:layoutMarginStart="@{dialog.whiteBtnText.isEmpty() ? @dimen/dp_0 : @dimen/dp_9}"
+                app:disabledBackground="@color/color_d21"
+                app:enabledBackground="@color/color_d21"
+                app:rippleColor="@color/color_d21"
+                app:radius="12dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

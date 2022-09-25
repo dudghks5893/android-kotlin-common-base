@@ -19,7 +19,7 @@ abstract class BaseDialogFragment<B : ViewDataBinding>(@LayoutRes val layoutId: 
     var isInitialized = false
         private set
 
-    override fun getTheme() = R.style.RoundedCornersDialogTheme
+//    override fun getTheme() = R.style.RoundedCornersDialogTheme
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (!this::mBinding.isInitialized) {
@@ -58,8 +58,10 @@ abstract class BaseDialogFragment<B : ViewDataBinding>(@LayoutRes val layoutId: 
         val windowManager = activity?.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val size = windowManager.currentWindowMetricsPointCompat() // 디바이스 가로,세로 길이
         val deviceWidth = size.x // 디바이스 가로 길이
+        val deviceHeight = size.y // 디바이스 가로 길이
 
-        params?.width = (deviceWidth * 0.9).toInt() // 여백 비율을 지정
+        params?.width = (deviceWidth * 0.9).toInt() // 여백 너비 지정
+//        params?.height = (deviceHeight * 0.5).toInt() // 여백 높이 지정
         dialog?.window?.attributes = params as WindowManager.LayoutParams
     }
 
